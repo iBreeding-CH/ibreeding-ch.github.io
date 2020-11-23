@@ -7,14 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>详细教程 - CropGBM</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="../css/theme.css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
@@ -25,7 +24,7 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -36,7 +35,6 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> CropGBM</a>
         <div role="search">
@@ -47,80 +45,59 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="..">网站主页</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../Feature/">程序特点</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../QuickStart/">快速入手</a>
-                    </li>
-                </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">详细教程</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_2">参数配置</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_3">基因型数据预处理</a>
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">网站主页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Feature/">程序特点</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../QuickStart/">快速入手</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">详细教程</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#_1">详细教程</a></li>
+    
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#vcf">预处理vcf格式数据</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#bedsnp">从bed格式文件中提取特定编号的样本、snp数据</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#bed">重编码bed格式数据</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_4">模块参数总体使用</a>
-    </li>
+        
+            <li><a class="toctree-l3" href="#_2">参数配置</a></li>
+        
+            <li><a class="toctree-l3" href="#_3">基因型数据预处理</a></li>
+        
+            <li><a class="toctree-l3" href="#_5">表型数据预处理</a></li>
+        
+            <li><a class="toctree-l3" href="#_11">群体结构分析</a></li>
+        
+            <li><a class="toctree-l3" href="#snp">建模与SNP选择</a></li>
+        
+            <li><a class="toctree-l3" href="#_15">表型预测</a></li>
+        
         </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_5">表型数据预处理</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#_6">从表型数据文件中提取特定表型数据并可视化</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_7">根据样本编号提取特定样本的表型数据</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_8">根据组编号提取各组样本的表型数据并可视化</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_9">归一化表型数据并可视化</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_10">表型数据重编码（多分类问题）</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_11">群体结构分析</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#pca-kmeans">PCA 降维 Kmeans 聚类分析样本群体结构并可视化</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#t-sne-optics">t-SNE 降维 OPTICS 聚类分析样本群体结构并可视化</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_12">比较聚类结果与真实群体关系的差异</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#snp">建模与SNP选择</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#_13">交叉验证</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_14">训练模型</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#snp_1">SNP选择</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_15">表型预测</a>
-    </li>
+    
+
     </ul>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../Parameters/">程序参数</a>
-                    </li>
-                </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Parameters/">程序参数</a>
+	    </li>
+          
+        </ul>
       </div>
-    </div>
+      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -145,14 +122,13 @@
       
     </li>
   </ul>
-  
   <hr/>
 </div>
           <div role="main">
             <div class="section">
               
                 <h1 id="_1">详细教程</h1>
-<p>本节以命令行形式为CropGBM中参数赋值，对程序各功能的实现进行详细介绍并展示部分结果，帮助用户根据研究目的配置相应参数。教程使用的是207个母系和30个父系杂交得到的6210个F1后代的玉米基因组SNP数据，每个样本包含4903个SNP位点，下载地址：XXX<br/><br/></p>
+<p>本节以命令行形式为CropGBM中参数赋值，对程序各功能的实现进行详细介绍并展示部分结果，帮助用户根据研究目的配置相应参数。教程使用的是207个母系和30个父系杂交得到的6210个F1后代的玉米基因组SNP数据，每个样本包含4903个SNP位点，下载地址：<a href="https://github.com/YuetongXU/CropGBM">https://github.com/YuetongXU/CropGBM</a><br/><br/></p>
 <h2 id="_2">参数配置</h2>
 <p>CropGBM支持 “配置文件” 与 “命令行” 两种参数赋值形式，其中“配置文件”是必须的。CropGBM会优先读取配置文件中各参数的值，再读取命令行中各参数的值。当某一参数被两种方式同时赋值时，CropGBM以命令行中参数值为参考，忽略配置文件中的参数值。</p>
 <p>配置文件是将参数及其对应的值集中在一个文件中，便于用户对大量参数进行统一管理与重复利用。配置文件格式如下：</p>
@@ -195,7 +171,7 @@ norm_mode = z-score
 <p>输入：ped、bed、vcf、bcf格式文件<br/>
 输出：filename_filter.bed/bim/fam/ped/map、filename.log/prune.in/.prune.out/frqx/imiss/irem/lmiss、filename_filter.geno、 filename_maf/het/imiss/lmiss.pdf<br/><br/></p>
 <h3 id="vcf">预处理vcf格式数据</h3>
-<p><em>$ cropgbm -c configfile.params -o gbm_result/ -pg all --fileprefix genofile --fileformat vcf --snpmaxmiss 0.10 --samplemaxmiss 0.10 --maf_max 0.05 --r2_cutoff 0.7</em></p>
+<p><em>$ cropgbm -c configfile.params -o gbm_result/ -pg all --fileprefix genofile --fileformat vcf --snpmaxmiss 0.10 --samplemaxmiss 0.10 --maf-max 0.05 --r2-cutoff 0.7</em></p>
 <p><code>-c</code> 配置文件路径：configfile.params<br/>
 <code>-o</code> 程序运行结果的输出路径：gbm_result/<br/>
 <code>-pg</code> 调用预处理基因型数据模块，可选值 [all, filter]。其中all表示程序将调用完整的预处理模块，包括对统计与可视化数据基本情况，根据缺失率、MAF筛除不符合要求的样本个体及snp位点，根据高频基因型填补snp的缺失数据，根据r^2去除冗余snp，根据snp编号或样本编号提取特定样本的特定基因型数据功能；而filter表示程序将调用部分的预处理模块，仅包括根据snp编号或样本编号提取特定样本的特定基因型数据功能：all<br/>
@@ -203,8 +179,8 @@ norm_mode = z-score
 <code>--fileformat</code> 基因型数据文件格式，可选值 [ped, bed, vcf, bcf]：vcf<br/>
 <code>--snpmaxmiss</code> snp最大缺失率。缺失率超过此阈值的snp将被剔除。默认值为 0.05：0.10<br/>
 <code>--samplemaxmiss</code> 样本最大缺失率。缺失率超过此阈值的样本将被剔除。默认值为 0.05：0.10<br/>
-<code>--maf_max</code> 最小等位基因频率。最小等位基因频率小于此阈值的snp将被剔除。默认值为 0.01：0.05<br/>
-<code>--r2_cutoff</code> 与plink中--indep-pairwise参数等价。默认值 0.8：0.7<br/></p>
+<code>--maf-max</code> 最小等位基因频率。最小等位基因频率小于此阈值的snp将被剔除。默认值为 0.01：0.05<br/>
+<code>--r2-cutoff</code> 与plink中--indep-pairwise参数等价。默认值 0.8：0.7<br/></p>
 <p>输出文件 genofile_filter.bed/bim/fam/ped/map、genofile.frqx/imiss/irem/lmiss/prune.in/prune.out、 filename_maf/het/imiss/lmiss.pdf：</p>
 <p><code>genofile_filter.bed/bim/fam</code> bed格式文件，且基因型的编码方式由 ATCG -&gt; 01（其中minor-&gt;0，major-&gt;1，miss-&gt;3），为后续重编码成加性编码做准备。由于plink可以快速读取并处理bed文件，此类文件可以作为生成训练集、测试集、验证集的中间文件。<br/>
 <code>genofile_filter.ped/map</code> ped格式文件，用于基因型重编码（-&gt; 012），且基因型的编码方式由 ATCG -&gt; 01，为后续重编码成加性编码做准备（其中minor-&gt;0，major-&gt;1，miss-&gt;3）。<br/>
@@ -236,7 +212,7 @@ norm_mode = z-score
 <p><code>genofile_filter.bed/bim/fam/ped/map</code> 为filter后的输出文件<br/>
 <code>genofile_filter.geno</code> 为重编码后的输出文件，样本编号为ped文件中的within-familyID<br/><br/></p>
 <h3 id="_4">模块参数总体使用</h3>
-<p><em>$ cropgbm -c configfile.params -o gbm_result/ -pg all --fileprefix genofile --fileformat ped --snpmaxmiss 0.10 --snpmaxmiss 0.10 --maf_max 0.05 --r2_cutoff 0.7 --recode --keep-sampleid-path ksampleid_file.txt --extract-snpid-path ksnpid_file.txt</em></p>
+<p><em>$ cropgbm -c configfile.params -o gbm_result/ -pg all --fileprefix genofile --fileformat ped --snpmaxmiss 0.10 --samplemaxmiss 0.10 --maf-max 0.05 --r2-cutoff 0.7 --recode --keep-sampleid-path ksampleid_file.txt --extract-snpid-path ksnpid_file.txt</em></p>
 <p>输出文件为 filename_filter.bed/bim/fam/ped/map、filename.prune.in/.prune.out/frqx/imiss/irem/lmiss、 filename_filter.geno、filename_maf/het/imiss/lmiss.pdf</p>
 <p>注意：上述参数除<code>-c</code>、<code>-pg</code>外均可通过配置文件设定而在命令行中省略<br/><br/></p>
 <h2 id="_5">表型数据预处理</h2>
@@ -279,8 +255,8 @@ norm_mode = z-score
 <p><img alt="fig 3" src="../img/phe_orgin_group_scatter.png" />
 <center>fig 3</center><br/><br/></p>
 <h3 id="_9">归一化表型数据并可视化</h3>
-<p><em>$ cropgbm -c configfile.params -o gbm_result/ -pp --phe-plot --phefile-path phefile.txt --phefile-sep ',' --phe-column 2 --ppgroupfile-path phefile.txt --ppgroupfile-sep ',' --ppgroupid-column 3 --ppgroupfile-header --phe_norm --norm-mode z-score</em></p>
-<p><code>--phe_norm</code> 调用表型数据归一化函数。<br/>
+<p><em>$ cropgbm -c configfile.params -o gbm_result/ -pp --phe-plot --phefile-path phefile.txt --phefile-sep ',' --phe-column 2 --ppgroupfile-path phefile.txt --ppgroupfile-sep ',' --ppgroupid-column 3 --ppgroupfile-header --phe-norm --norm-mode z-score</em></p>
+<p><code>--phe-norm</code> 调用表型数据归一化函数。<br/>
 <code>--norm-mode</code> 归一化算法，可选值 [0-1, max-min, z-score]。默认值 z-score：z-score</p>
 <p>输出文件为 phefile_groupN.phenorm、phefile_scatter.pdf：</p>
 <p><code>phefile_groupX.phenorm</code> 为根据样本的组编号将相同组样本的表型数据提取出并归一化后的输出文件，其中X为样本的组编号。总共生成N个文件，各文件中仅包含属于组编号X的样本及其表型数据，其中N为样本的组数量<br/>
@@ -305,7 +281,7 @@ norm_mode = z-score
 <p>输入：基因型数据<br/>
 输出：filename.cluster、filename_redim.pdf、filename_cluster.pdf、filename_reachability.pdf<br/><br/></p>
 <h3 id="pca-kmeans">PCA 降维 Kmeans 聚类分析样本群体结构并可视化</h3>
-<p><em>$ cropgbm -c configfile.params -o gbm_result/ -s --genofile-path filename_filter.geno --structure_plot --redim-mode pca --pca-explained-var 0.98 --cluster-mode kmeans --n-clusters 30</em></p>
+<p><em>$ cropgbm -c configfile.params -o gbm_result/ -s --genofile-path filename_filter.geno --structure-plot --redim-mode pca --pca-explained-var 0.98 --cluster-mode kmeans --n-clusters 30</em></p>
 <p><code>-s</code> 调用群体结构分析模块。<br/>
 <code>--genofile-path</code> 基因型数据文件路径，常为预处理后结果作为输入：filename_filter.geno<br/>
 <code>--structure-plot</code> 调用群体结构绘图函数。总计输出2（3）幅散点图展示降维与聚类结果。<br/>
@@ -323,7 +299,7 @@ norm_mode = z-score
 <center>fig 6</center><br/><br/></p>
 <h3 id="t-sne-optics">t-SNE 降维 OPTICS 聚类分析样本群体结构并可视化</h3>
 <p>t-SNE 和 OPTICS 降维聚类算法更适用于群体类别数未知的样本，在已知群体类别数的情况下推荐使用 PCA 和 Kmeans 降维聚类算法。</p>
-<p><em>$ cropgbm -c configfile.params -o gbm_result/ -s --genofile-path filename_filter.geno --structure_plot --redim-mode tsne --window-size 50 --tsne-dim 2 --cluster-mode optics --optics-min-sample 0.025 --optics-xi 0.01 --optics-min-cluster-size 0.03</em></p>
+<p><em>$ cropgbm -c configfile.params -o gbm_result/ -s --genofile-path filename_filter.geno --structure-plot --redim-mode tsne --window-size 50 --tsne-dim 2 --cluster-mode optics --optics-min-sample 0.025 --optics-xi 0.01 --optics-min-cluster-size 0.03</em></p>
 <p><code>--window-size</code> 降维中滑窗大小。由于t-SNE降维算法计算速度随维度的增加而大幅降低，程序通过滑窗的方式对数据进行初步降维。在snp数量较少时，参数对降维结果影响较大。建议随着snp数量的降低，相应的减少参数值。默认值为 20。该参数仅在<code>--redim-mode=tsne</code>时使用：50<br/>
 <code>--tsne-dim</code> tsne算法降维后数据的维度。该参数仅在<code>--redim-mode=tsne</code>时使用。默认值为 2：2<br/>
 <code>--optics-min-samples</code> 参数值为大于1的整数或0-1间的小数。当参数值为整数时，表示构成核心点所需的最小样本数； 当参数值为小数时，表示构成核心点所需的最小样本数占总样本数的比例。该参数仅在<code>--cluster-mode=optics</code>时使用。默认值为 0.025：0.05<br/>
@@ -341,7 +317,7 @@ norm_mode = z-score
 <p><img alt="fig 9" src="../img/6210_4903snp_tsne2_reachability.png" />
 <center>fig 9</center><br/><br/></p>
 <h3 id="_12">比较聚类结果与真实群体关系的差异</h3>
-<p><em>$ cropgbm -c configfile.params -o gbm_result/ -s --genofile-path filename_filter.geno --structure_plot --redim-mode tsne --window-size 50 --tsne-dim 2 --cluster-mode optics --optics-min-sample 0.025 --optics-xi 0.01 --optics-min-cluster-size 0.03 --sgroupfile-path phefile.txt --sgroupfile-sep ',' --sgroupid-column 3 --sgroupfile-header</em></p>
+<p><em>$ cropgbm -c configfile.params -o gbm_result/ -s --genofile-path filename_filter.geno --structure-plot --redim-mode tsne --window-size 50 --tsne-dim 2 --cluster-mode optics --optics-min-sample 0.025 --optics-xi 0.01 --optics-min-cluster-size 0.03 --sgroupfile-path phefile.txt --sgroupfile-sep ',' --sgroupid-column 3 --sgroupfile-header</em></p>
 <p><code>--sgroupfile-path</code> 组编号数据文件路径：phefile.txt<br/>
 <code>--sgroupfile-sep</code> 组编号数据文件分隔符：','<br/>
 <code>--sgroupfile-column</code> 组编号数据文件中储存组编号的列索引。该参数仅在 --sgroupfile-path 文件列数大于2时使用：3<br/>
@@ -435,7 +411,7 @@ norm_mode = z-score
     
   </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -445,7 +421,7 @@ norm_mode = z-score
 
   </div>
 
-  <div class="rst-versions" role="note" aria-label="versions">
+  <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
@@ -459,11 +435,6 @@ norm_mode = z-score
     <script>var base_url = '..';</script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        };
-    </script>
 
 </body>
 </html>
