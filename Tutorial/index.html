@@ -341,36 +341,36 @@ norm_mode = z-score
 <p>程序允许用户根据研究目的修改lightgbm算法中部分参数。但由于参数较多，本教程没有进行介绍， 相关内容参见：程序参数 &gt; SNP选择与表型预测模块参数 &gt; <a href="../Parameters/#lightgbm">lightgbm参数</a><br/><br/></p>
 <h3 id="_13">交叉验证</h3>
 <p>模型训练时，若无验证集帮助判断模型是否过拟合，建议优先通过<code>-cv</code>确定合理的训练次数。</p>
-<p><em>$ cropgbm -c configfile.params -o gbm_result/ -e -cv --traingeno train1.geno --trainphe train1.phe --cv-nfold 5 --min-detal 0.5</em></p>
+<p><em>$ cropgbm -c configfile.params -o gbm_result/ -e -cv --traingeno train.geno --trainphe train.phe --cv-nfold 5 --min-detal 0.5</em></p>
 <p><code>-e</code> 调用SNP选择与表型预测模块。<br/>
 <code>-cv</code> 调用交叉验证功能。<br/>
-<code>--traingeno</code> 训练集样本基因型数据文件路径。文件分隔符为','，第一行为snp编号信息，第一列为样本编号信息。 该参数在<code>-t</code>或<code>-cv</code>被指明时使用：train1.geno<br/>
+<code>--traingeno</code> 训练集样本基因型数据文件路径。文件分隔符为','，第一行为snp编号信息，第一列为样本编号信息。 该参数在<code>-t</code>或<code>-cv</code>被指明时使用：train.geno<br/>
 <code>--trainphe</code> 训练集样本表型数据文件路径。文件分隔符为','，包含表头，第一列为样本编号信息。该参数在<code>-t</code>或<code>-cv</code>被指明时使用：train.phe<br/>
 <code>--cv-nfold</code> 每次交叉验证的折叠数。默认值 5：5<br/>
 <code>--min-detal</code> 每次训练对模型精确度提升的最小百分值。程序会返回提升的精确度小于此阈值时模型的训练次数与此时模型交叉验证的精确度。当<code>objective=regression</code>时，精确度为预测结果与真实值间 mse 的均值。默认值 0.5：0.5<br/><br/></p>
 <h3 id="_14">训练模型</h3>
-<p><em>$ cropgbm -c configfile.params -o gbm_result/ -e -t --traingeno train1.geno --trainphe train1.phe --validgeno valid.geno --validphe valid.phe</em></p>
+<p><em>$ cropgbm -c configfile.params -o gbm_result/ -e -t --traingeno train.geno --trainphe train.phe --validgeno valid.geno --validphe valid.phe</em></p>
 <p><code>-t</code> 调用训练模型功能<br/>
 <code>--validgeno</code> 验证集样本基因型数据文件路径。文件分隔符为','，第一行为snp编号，第一列为样本编号。：valid.geno<br/>
 <code>--validphe</code> 验证集样本编号文件路径。文件分隔符为','，包含表头，第一列为样本编号：valid.phe</p>
-<p><em>$ cropgbm -c configfile.params -o gbm_result/ -e -t --traingeno train2.geno --trainphe train2.phe --validgeno valid.geno --validphe valid.phe --init-model-path train1.lgb_model</em></p>
-<p><code>--init-model-path</code> 起始模型文件路径。lightgbm算法会在此模型基础上继续训练。常用于大数据的分批训练：train1.lgb_model</p>
-<p>输出文件：train1.lgb_model</p>
-<p><code>train1.lgb_model</code> 为模型文件。记录了每次训练的树结构及每个节点的增益值。</p>
+<p><em>$ cropgbm -c configfile.params -o gbm_result/ -e -t --traingeno test.geno --trainphe test.phe --validgeno valid.geno --validphe valid.phe --init-model-path train.lgb_model</em></p>
+<p><code>--init-model-path</code> 起始模型文件路径。lightgbm算法会在此模型基础上继续训练。常用于大数据的分批训练：train.lgb_model</p>
+<p>输出文件：train.lgb_model</p>
+<p><code>train.lgb_model</code> 为模型文件。记录了每次训练的树结构及每个节点的增益值。</p>
 <p>注意：程序通过顺序识别不同的snp，而不以列名。如果两数据集之间相同索引列的snp不同，程序无法识别。所以训练集、测试集、验证集之间snp排序需要一致，否则预测结果无参考性。若训练集与验证集之间相同snp的索引不同，程序会发出警告并对验证集重新排序，使其与训练集相同。但程序没有重排测试集的功能，所以当用户将测试集作为验证集并收到警告时，预测前需重排测试集snp顺序使其与训练集一致。<br/><br/></p>
 <h3 id="snp_1">SNP选择</h3>
-<p><em>$ cropgbm -c configfile.params -o gbm_result/ -e -t -sf --bygain-boxplot --traingeno train1.geno --trainphe train1.phe --gain-min 0.05 --colorbar-max 0.6 --cv-times 6</em></p>
+<p><em>$ cropgbm -c configfile.params -o gbm_result/ -e -t -sf --bygain-boxplot --traingeno train.geno --trainphe train.phe --gain-min 0.05 --colorbar-max 0.6 --cv-times 6</em></p>
 <p><code>-sf</code> 调用SNP选择功能。该功能被设计为与训练模型功能（<code>-t</code>）联用，不可单独使用。<br/>
 <code>--bygain-boxplot</code> 绘制随snp加入模型误差不断变化的箱线图。该参数在<code>-sf</code>时使用。<br/>
 <code>--gain-min</code> 计算每个snp在模型中的总增益，将最大增益与<code>--gain-min</code>的乘积作为阈值。当snp在模型中的总增益小于阈值时，此snp不会被选择。默认值 0.05：0.05<br/>
 <code>--colorbar-max</code> 各snp在各树中的最大增益值与<code>--colorbar-max</code>的乘积将作为热图中 colorbar 的最大值。默认值 0.6：0.6<br/>
 <code>--cv-times</code> 交叉验证的重复次数。默认值 5：6<br/></p>
-<p>输出文件：train1.lgb_model、train1.feature、train1_bygain.pdf、train1_random.pdf、train1_heatmap.pdf</p>
-<p><code>train1.lgb_model</code> 为模型文件。记录了每次训练的树结构及每个节点的增益值。<br/>
-<code>train1.feature</code> 为SNP增益文件。记录了各snp在每颗决策树中的增益值。<br/>
-<code>train1_bygain.pdf</code> 以散点图的形式展示随snp的加入，模型误差的变化情况。程序利用已加入的snp在训练集上重复进行 5-fold 的交叉验证。图中x轴坐标为每次模型中新加入的snp编号，按照train1.feature文件中snp的 featureGain_sum 值从大到小依次加入；y轴坐标为预测误差。（fig 12）<br/>
-<code>train1_random.pdf</code> 以箱线图的形式展示随snp的加入，模型误差的变化情况。图中x轴为模型利用的snp数量，由于每次交叉验证所利用的snp均是重新从全部snp中随机抽取的，故没有snp编号；y轴为预测误差。（fig 13）<br/>
-<code>train1_heatmap.pdf</code> 以热图的形式展示各snp在不同决策树中的增益值及变化规律，即 train1.feature 文件中的信息。图中x轴坐标为snp编号，按照 train1.feature 文件中snp的 featureGain_sum 值从大到小排列；y轴坐标为决策树编号，编号代表模型的训练次数（如tree20表示第20次训练所生成的决策树）。（fig 14）</p>
+<p>输出文件：train.lgb_model、train.feature、train_bygain.pdf、train_random.pdf、train_heatmap.pdf</p>
+<p><code>train.lgb_model</code> 为模型文件。记录了每次训练的树结构及每个节点的增益值。<br/>
+<code>train.feature</code> 为SNP增益文件。记录了各snp在每颗决策树中的增益值。<br/>
+<code>train_bygain.pdf</code> 以散点图的形式展示随snp的加入，模型误差的变化情况。程序利用已加入的snp在训练集上重复进行 5-fold 的交叉验证。图中x轴坐标为每次模型中新加入的snp编号，按照train.feature文件中snp的 featureGain_sum 值从大到小依次加入；y轴坐标为预测误差。（fig 12）<br/>
+<code>train_random.pdf</code> 以箱线图的形式展示随snp的加入，模型误差的变化情况。图中x轴为模型利用的snp数量，由于每次交叉验证所利用的snp均是重新从全部snp中随机抽取的，故没有snp编号；y轴为预测误差。（fig 13）<br/>
+<code>train_heatmap.pdf</code> 以热图的形式展示各snp在不同决策树中的增益值及变化规律，即 train.feature 文件中的信息。图中x轴坐标为snp编号，按照 train.feature 文件中snp的 featureGain_sum 值从大到小排列；y轴坐标为决策树编号，编号代表模型的训练次数（如tree20表示第20次训练所生成的决策树）。（fig 14）</p>
 <p><img alt="fig 12" src="../img/6210_4903snp_bygain.png" /> 
 <center>fig 12</center></p>
 <p><img alt="fig 13" src="../img/6210_4903snp_random.png" /> 
@@ -383,10 +383,10 @@ norm_mode = z-score
 </ul>
 <p>输入：基因型数据、模型文件<br/>
 输出：filename.predict</p>
-<p><em>$ cropgbm -c configfile.params -o gbm_result/ -e -p --testgeno test.geno --modelfile-path train1.lgb_model</em></p>
+<p><em>$ cropgbm -c configfile.params -o gbm_result/ -e -p --testgeno test.geno --modelfile-path train.lgb_model</em></p>
 <p><code>-p</code> 调用表型预测功能<br/>
 <code>--testgeno</code> 测试集样本基因型数据文件路径。文件分隔符为','，第一行为snp编号信息，第一列为样本编号信息。该参数在<code>-p</code>被指明时使用：test.geno<br/>
-<code>--modelfile-path</code> lightgbm模型文件路径，程序通过此模型完成对测试集样本的表型预测。该参数在<code>-p</code>被指明时使用：train1.lgb_model</p>
+<code>--modelfile-path</code> lightgbm模型文件路径，程序通过此模型完成对测试集样本的表型预测。该参数在<code>-p</code>被指明时使用：train.lgb_model</p>
 <p>输出文件 filename.predict：</p>
 <p><code>filename.predict</code> 为预测结果的输出文件。</p>
               
