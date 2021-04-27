@@ -302,15 +302,14 @@ norm_mode = z-score
 <center>fig 6</center><br/><br/></p>
 <h3 id="t-sne-optics">t-SNE 降维 OPTICS 聚类分析样本群体结构并可视化</h3>
 <p>t-SNE 和 OPTICS 降维聚类算法更适用于群体类别数未知的样本，在已知群体类别数的情况下推荐使用 PCA 和 Kmeans 降维聚类算法。</p>
-<p><em>$ cropgbm -c configfile.params -o gbm_result/ -s --genofile-path filename_filter.geno --structure-plot --redim-mode tsne --window-size 50 --tsne-dim 2 --cluster-mode optics --optics-min-sample 0.025 --optics-xi 0.01 --optics-min-cluster-size 0.03</em></p>
-<p><code>--window-size</code> 降维中滑窗大小。由于t-SNE降维算法计算速度随维度的增加而大幅降低，程序通过滑窗的方式对数据进行初步降维。在snp数量较少时，参数对降维结果影响较大。建议随着snp数量的降低，相应的减少参数值。默认值为 20。该参数仅在<code>--redim-mode=tsne</code>时使用：50<br/>
+<p><em>$ cropgbm -c configfile.params -o gbm_result/ -s --genofile-path genofile_filter.geno --structure-plot --redim-mode tsne --window-size 5 --tsne-dim 2 --cluster-mode optics --optics-min-sample 0.025 --optics-xi 0.01 --optics-min-cluster-size 0.03</em></p>
+<p><code>--window-size</code> 降维中滑窗大小。由于t-SNE降维算法计算速度随维度的增加而大幅降低，程序通过滑窗的方式对数据进行初步降维。在snp数量较少时，参数对降维结果影响较大。建议随着snp数量的降低，相应的减少参数值。默认值为 20。该参数仅在<code>--redim-mode=tsne</code>时使用：5<br/>
 <code>--tsne-dim</code> tsne算法降维后数据的维度。该参数仅在<code>--redim-mode=tsne</code>时使用。默认值为 2：2<br/>
 <code>--optics-min-samples</code> 参数值为大于1的整数或0-1间的小数。当参数值为整数时，表示构成核心点所需的最小样本数； 当参数值为小数时，表示构成核心点所需的最小样本数占总样本数的比例。该参数仅在<code>--cluster-mode=optics</code>时使用。默认值为 0.025：0.05<br/>
 <code>--optics-xi</code> 聚集成类所需的可达距离梯度的最小值。该参数仅在<code>--cluster-mode=optics</code>时使用。默认值为 0.05：0.05。<br/>
 <code>--optics-min-cluster-size</code> 参数值为大于1的整数或0-1间的小数。当参数值为整数时，表示聚集成类所需的最小样本数； 当参数值为小数时，表示聚集成类所需的最小样本数占总样本数的比例。该参数仅在<code>--cluster-mode=optics</code>时使用。默认值为 0.03：0.06<br/></p>
-<p>输出文件 filename.cluster、filename_redim.pdf、filename_cluster.pdf、filename_reachability.pdf：</p>
-<p><code>filename.cluster</code> 为聚类结果的输出文件。内容为两列：样本编号，类别。其中类别为 '-1' 表示此样本未被聚类。<br/>
-<code>filename_redim.pdf</code> 以散点图的形式展现降维结果。（fig 7）<br/>
+<p>输出文件 filename.redim、filename.cluster、filename_redim.pdf、filename_cluster.pdf、filename_reachability.pdf：</p>
+<p><code>filename_redim.pdf</code> 以散点图的形式展现降维结果。（fig 7）<br/>
 <code>filename_cluster.pdf</code> 以散点图的形式展现聚类结果，不同类别用不同颜色表示。（fig 8）<br/>
 <code>filename_reachability.pdf</code> 以散点图的形式展现各样本间的可达距离，仅在<code>--redim-mode=tsne</code>时输出。不同类别用不同颜色表示，离散点用黑色表示。（fig 9）<br/></p>
 <p><img alt="fig 7" src="../img/6210_4903snp_tsne2.png" /> 
@@ -320,16 +319,14 @@ norm_mode = z-score
 <p><img alt="fig 9" src="../img/6210_4903snp_tsne2_reachability.png" />
 <center>fig 9</center><br/><br/></p>
 <h3 id="_12">比较聚类结果与真实群体关系的差异</h3>
-<p><em>$ cropgbm -c configfile.params -o gbm_result/ -s --genofile-path filename_filter.geno --structure-plot --redim-mode tsne --window-size 50 --tsne-dim 2 --cluster-mode optics --optics-min-sample 0.025 --optics-xi 0.01 --optics-min-cluster-size 0.03 --sgroupfile-path phefile.txt --sgroupfile-sep ',' --sgroupid-column 3 --sgroupfile-header</em></p>
+<p><em>$ cropgbm -c configfile.params -o gbm_result/ -s --genofile-path genofile_filter.geno --structure-plot --redim-mode tsne --window-size 5 --tsne-dim 2 --cluster-mode optics --optics-min-sample 0.025 --optics-xi 0.01 --optics-min-cluster-size 0.03 --sgroupfile-path phefile.txt --sgroupfile-sep ',' --sgroupid-column 2 --sgroupfile-header</em></p>
 <p><code>--sgroupfile-path</code> 组编号数据文件路径：phefile.txt<br/>
 <code>--sgroupfile-sep</code> 组编号数据文件分隔符：','<br/>
-<code>--sgroupfile-column</code> 组编号数据文件中储存组编号的列索引。该参数仅在 --sgroupfile-path 文件列数大于2时使用：3<br/>
+<code>--sgroupfile-column</code> 组编号数据文件中储存组编号的列索引。该参数仅在 --sgroupfile-path 文件列数大于2时使用：2<br/>
 <code>--sgroupfile-header</code> 组编号数据文件文件包含表头。<br/></p>
-<p>输出文件 filename.cluster、filename_redim.pdf、filename_cluster.pdf、filename_reachability.pdf：</p>
-<p><code>filename.cluster</code> 为聚类结果的输出文件。内容为两列：样本编号，类别。其中类别为 '-1' 表示此样本未被聚类。<br/>
-<code>filename_redim.pdf</code> 以散点图的形式展现降维结果。当参数<code>--sgroupfile-path</code>被赋值时，程序将在降维图的基础上标注出各样本的真实标签，不同类别用不同颜色表示。（fig 10）<br/>
-<code>filename_cluster.pdf</code> 以散点图的形式展现聚类结果，不同类别用不同颜色表示。（fig 11）<br/>
-<code>filename_reachability.pdf</code> 以散点图的形式展现各样本间的可达距离，仅在<code>--redim-mode=tsne</code>时输出。不同类别用不同颜色表示，离散点用黑色表示。<br/></p>
+<p>输出文件 filename.redim、filename.cluster、filename_redim.pdf、filename_cluster.pdf、filename_reachability.pdf：</p>
+<p><code>filename_redim.pdf</code> 以散点图的形式展现降维结果。当参数<code>--sgroupfile-path</code>被赋值时，程序将在降维图的基础上标注出各样本的真实标签，不同类别用不同颜色表示。（fig 10）<br/>
+<code>filename_cluster.pdf</code> 以散点图的形式展现聚类结果，不同类别用不同颜色表示。（fig 11）<br/></p>
 <p><img alt="fig 10" src="../img/6210_4903snp_ws5_tsne2_label.png" /> 
 <center>fig 10</center></p>
 <p><img alt="fig 11" src="../img/6210_4903snp_ws5_tsne2_xi001.png" /> 
