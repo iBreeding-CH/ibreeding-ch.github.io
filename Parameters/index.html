@@ -138,7 +138,7 @@
 <p>除非模块参数外，其他参数仅当所属模块被调用时才会使用。<br/><br/></p>
 <h2 id="_2">非模块参数</h2>
 <p>下面参数将在各模块中使用：<br/>
-<code>-c</code>, <code>--config_path</code>：配置文件路径，文件中指明程序所需调用的各参数的值。 当文件中参数与命令行被调参数重复时，程序将以命令行值为标准。<br/>
+<code>-c</code>, <code>--config-path</code>：配置文件路径，文件中指明程序所需调用的各参数的值。 当文件中参数与命令行被调参数重复时，程序将以命令行值为标准。<br/>
 <code>-o</code>, <code>--output-folder</code>：程序运行结果的输出路径。默认为当前工作路径。<br/><br/></p>
 <h2 id="_3">基因型数据预处理模块参数</h2>
 <ul>
@@ -154,7 +154,8 @@
 <ul>
 <li><strong>可选参数</strong></li>
 </ul>
-<p><code>--remove-sampleid-path</code>：待删除样本编号文件路径，格式为以空格或制表符作为分隔符的两列样本编号。 其中第一列为 familyID，第二列为 within-familyID。程序将根据样本编号删除基因型文件中对应样本数据。<br/>
+<p><code>--plink-path</code>：指定 plink 调用路径。默认值 plink<br/>
+<code>--remove-sampleid-path</code>：待删除样本编号文件路径，格式为以空格或制表符作为分隔符的两列样本编号。 其中第一列为 familyID，第二列为 within-familyID。程序将根据样本编号删除基因型文件中对应样本数据。<br/>
 <code>--keep-sampleid-path</code>：待提取样本编号文件路径，格式为以空格或制表符作为分隔符的两列样本编号。 其中第一列为 familyID，第二列为 within-familyID。程序将根据样本编号提取基因型文件中对应样本数据。<br/>
 <code>--extract-snpid-path</code>：待提取snp编号文件路径，格式为一列snp编号。程序将根据snp编号提取基因型文件中对应snp数据。<br/>
 <code>--exclude-snpid-path</code>：待删除snp编号文件路径，格式为一列snp编号。程序将根据snp编号删除基因型文件中对应snp数据。<br/>
