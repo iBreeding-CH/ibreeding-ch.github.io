@@ -281,7 +281,7 @@ norm_mode = z-score
 <li>基于基因型数据分析样本的种群结构</li>
 </ul>
 <p>输入：基因型数据<br/>
-输出：filename.cluster、filename_redim.pdf、filename_cluster.pdf、filename_reachability.pdf<br/><br/></p>
+输出：filename.redim、filename.cluster、filename_redim.pdf、filename_cluster.pdf、filename_reachability.pdf<br/><br/></p>
 <h3 id="pca-kmeans">PCA 降维 Kmeans 聚类分析样本群体结构并可视化</h3>
 <p><em>$ cropgbm -c configfile.params -o gbm_result/ -s --genofile-path genofile_filter.geno --structure-plot --redim-mode pca --pca-explained-var 0.98 --cluster-mode kmeans --n-clusters 30</em></p>
 <p><code>-s</code> 调用群体结构分析模块。<br/>
@@ -292,7 +292,8 @@ norm_mode = z-score
 <code>--cluster-mode</code> 聚类算法，可选值 [kmeans, optics]。默认值 kmeans：kmeans<br/>
 <code>--n-clusters</code> 形成的簇数以及生成的质心数。该参数仅在<code>--cluster-mode=kmeans</code>时使用：30（因为已知数据集是207个父本与30个母本杂交得到的F1）<br/></p>
 <p>输出文件 filename.cluster、filename_redim.pdf、filename_cluster.pdf：</p>
-<p><code>filename.cluster</code> 为聚类结果的输出文件。内容为两列：样本编号、类别。其中类别为 '-1' 表示此样本未被聚类。<br/>
+<p><code>filename.redim</code> 为降维结果的输出文件。内容为多列：首列为样本编号，后续为降维后的各维度值。<br/>
+<code>filename.cluster</code> 为聚类结果的输出文件。内容为两列：样本编号、类别。其中类别为 '-1' 表示此样本未被聚类。<br/>
 <code>filename_redim.pdf</code> 以散点图的形式展现降维结果。（fig 5）<br/>
 <code>filename_cluster.pdf</code> 以散点图的形式展现聚类结果，不同类别用不同颜色表示。（fig 6）<br/></p>
 <p><img alt="fig 5" src="../img/6210_4903snp_pca_redim.png" /> 
