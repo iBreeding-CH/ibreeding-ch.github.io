@@ -154,10 +154,10 @@ $ source ~/.bashrc
 <h2 id="_3">参数配置</h2>
 <p>CropGBM 支持 “配置文件” 与 “命令行” 两种参数赋值形式，其中“配置文件”是必须的。CropGBM 会优先读取配置文件中各参数的值，再读取命令行中各参数的值。当某一参数被两种方式同时赋值时，CropGBM 以命令行中参数值为参考，忽略配置文件中的参数值。</p>
 <pre><code># CropGBM 读取配置文件（-c config_path）中各参数的值并调用基因型数据预处理模块（-pg all）
-$ cropgbm -c config_path -pg all
+$ cropgbm -c config_path -o ./gbm_result/ -pg all
 
 # CropGBM 忽略配置文件中 fileformat 值，而以 ped 为参考
-$ cropgbm -c config_path -pg all --fileformat ped
+$ cropgbm -c config_path -o ./gbm_result/ -pg all --fileformat ped
 </code></pre>
 <p><strong>注意：</strong>若程序无法运行，请尝试在程序名前添加 python。如 <em>$ python cropgbm -c config_path -pg all</em><br/><br/></p>
 <h2 id="_4">基因型数据预处理</h2>
