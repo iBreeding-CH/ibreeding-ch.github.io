@@ -138,30 +138,30 @@
 <p>除非模块参数外，其他参数仅当所属模块被调用时才会使用。<br/><br/></p>
 <h2 id="_2">非模块参数</h2>
 <p>下面参数将在各模块中使用：<br/>
-<code>-c</code>, <code>--config-path</code>：配置文件路径，文件中指明程序所需调用的各参数的值。 当文件中参数与命令行被调参数重复时，程序将以命令行值为标准。<br/>
-<code>-o</code>, <code>--output-folder</code>：程序运行结果的输出路径。默认为当前工作路径。<br/><br/></p>
+<code>-c</code>, <code>--config-path</code> (str) ：配置文件路径，文件中指明程序所需调用的各参数的值。 当文件中参数与命令行被调参数重复时，程序将以命令行值为标准。<br/>
+<code>-o</code>, <code>--output-folder</code> (str) ：程序运行结果的输出路径。默认为当前工作路径。<br/><br/></p>
 <h2 id="_3">基因型数据预处理模块参数</h2>
 <ul>
 <li><strong>布尔参数</strong></li>
 </ul>
-<p><code>-pg</code>，<code>--preprocessed-geno</code>：调用预处理基因型数据模块，可选值 [all, filter]。其中all表示程序将调用完整的预处理模块， 包括对统计与可视化数据基本情况，根据缺失率、MAF筛除不符合要求的样本个体及snp位点，根据高频基因型填补snp的缺失数据， 根据r^2去除冗余snp，根据snp编号或样本编号提取特定样本的特定基因型数据功能；而filter表示程序将调用部分的预处理模块， 仅包括根据snp编号或样本编号提取特定样本的特定基因型数据功能。<br/>
+<p><code>-pg</code>，<code>--preprocessed-geno</code>：调用预处理基因型数据模块，可选值 <code>[all, filter]</code>。其中all表示程序将调用完整的预处理模块， 包括对统计与可视化数据基本情况，根据缺失率、MAF筛除不符合要求的样本个体及snp位点，根据高频基因型填补snp的缺失数据， 根据r^2去除冗余snp，根据snp编号或样本编号提取特定样本的特定基因型数据功能；而filter表示程序将调用部分的预处理模块， 仅包括根据snp编号或样本编号提取特定样本的特定基因型数据功能。<br/>
 <ul>
 <li><strong>必须参数</strong></li>
 </ul>
-<p><code>--fileprefix</code>：基因型数据文件名前缀。<br/>
+<p><code>--fileprefix</code> (str) ：基因型数据文件名前缀。<br/>
 <ul>
 <li><strong>可选参数</strong></li>
 </ul>
-<p><code>--fileformat</code>：基因型数据文件格式，可选值 [ped, bed]。默认值 bed<br/>
-<code>--plink-path</code>：指定 plink 调用路径。默认值 plink<br/>
-<code>--remove-sampleid-path</code>：待删除样本编号文件路径，格式为以空格或制表符作为分隔符的两列样本编号。 其中第一列为 familyID，第二列为 within-familyID。程序将根据样本编号删除基因型文件中对应样本数据。<br/>
-<code>--keep-sampleid-path</code>：待提取样本编号文件路径，格式为以空格或制表符作为分隔符的两列样本编号。 其中第一列为 familyID，第二列为 within-familyID。程序将根据样本编号提取基因型文件中对应样本数据。<br/>
-<code>--extract-snpid-path</code>：待提取snp编号文件路径，格式为一列snp编号。程序将根据snp编号提取基因型文件中对应snp数据。<br/>
-<code>--exclude-snpid-path</code>：待删除snp编号文件路径，格式为一列snp编号。程序将根据snp编号删除基因型文件中对应snp数据。<br/>
-<code>--snpmaxmiss</code>：snp最大缺失率。筛除缺失率超过阈值的snp。默认值 0.05<br/>
-<code>--samplemaxmiss</code>：样本最大缺失率。筛除缺失率超过阈值的样本。默认值 0.05<br/>
-<code>--maf-max</code>：最小等位基因频率。筛除最小等位基因频率小于阈值的snp。默认值 0.01<br/>
-<code>--r2-cutoff</code>：与 plink 中<code>--indep-pairwise</code>参数等价。默认值 0.8<br/><br/></p>
+<p><code>--fileformat</code> (str) ：基因型数据文件格式，可选值 <code>[ped, bed]</code>。默认值 bed<br/>
+<code>--plink-path</code> (str) ：指定 plink 调用路径。默认值 plink<br/>
+<code>--remove-sampleid-path</code> (str) ：待删除样本编号文件路径，格式为以空格或制表符作为分隔符的两列样本编号。 其中第一列为 familyID，第二列为 within-familyID。程序将根据样本编号删除基因型文件中对应样本数据。<br/>
+<code>--keep-sampleid-path</code> (str) ：待提取样本编号文件路径，格式为以空格或制表符作为分隔符的两列样本编号。 其中第一列为 familyID，第二列为 within-familyID。程序将根据样本编号提取基因型文件中对应样本数据。<br/>
+<code>--extract-snpid-path</code> (str) ：待提取snp编号文件路径，格式为一列snp编号。程序将根据snp编号提取基因型文件中对应snp数据。<br/>
+<code>--exclude-snpid-path</code> (str) ：待删除snp编号文件路径，格式为一列snp编号。程序将根据snp编号删除基因型文件中对应snp数据。<br/>
+<code>--snpmaxmiss</code> (float) ：snp最大缺失率。筛除缺失率超过阈值的snp。默认值 0.05<br/>
+<code>--samplemaxmiss</code> (float) ：样本最大缺失率。筛除缺失率超过阈值的样本。默认值 0.05<br/>
+<code>--maf-max</code> (float) ：最小等位基因频率。筛除最小等位基因频率小于阈值的snp。默认值 0.01<br/>
+<code>--r2-cutoff</code> (float) ：与 plink 中<code>--indep-pairwise</code>参数等价。默认值 0.8<br/><br/></p>
 <h2 id="_4">表型数据预处理模块参数</h2>
 <ul>
 <li><strong>布尔参数</strong></li>
@@ -172,21 +172,21 @@
 <ul>
 <li><strong>必须参数</strong></li>
 </ul>
-<p><code>--phefile-path</code>：表型数据文件路径。</p>
+<p><code>--phefile-path</code> (str) ：表型数据文件路径。</p>
 <ul>
 <li><strong>半必须参数</strong></li>
 </ul>
-<p><code>--ppexsampleid-path</code>：待提取样本编号文件路径，文件内容仅为一列样本编号。<br/>
-<code>--ppgroupfile-path</code>：组编号数据文件路径。<br/>
-<code>--ppgroupfile-sep</code>：组编号数据文件分隔符。默认值为 ','<br/>
-<code>--ppgroupid-name</code>：组编号数据文件中储存组编号信息的列名。<br/>
-<code>--num2wordfile-path</code>：整数与表型对应转化表文件路径。该参数仅在<code>--phe-recode=num2word</code>时使用。<br/></p>
+<p><code>--ppexsampleid-path</code> (str) ：待提取样本编号文件路径，文件内容仅为一列样本编号。<br/>
+<code>--ppgroupfile-path</code> (str) ：组编号数据文件路径。<br/>
+<code>--ppgroupfile-sep</code> (str) ：组编号数据文件分隔符。默认值为 ','<br/>
+<code>--ppgroupid-name</code> (str) ：组编号数据文件中储存组编号信息的列名。<br/>
+<code>--num2wordfile-path</code> (str) ：整数与表型对应转化表文件路径。该参数仅在<code>--phe-recode=num2word</code>时使用。<br/></p>
 <ul>
 <li><strong>可选参数</strong></li>
 </ul>
-<p><code>--phefile-sep</code>：表型数据文件分隔符。默认值为 ','<br/>
-<code>--phe-name</code>：表型数据文件中储存表型信息的列名。<br/>
-<code>--phe-recode</code>：调用表型数据重编码函数，可选值 [word2num, num2word]。其中 word2num 表示将表型数据重编码为连续非负整数形式， num2word 表示将连续非负整数形式重编码为表型数据（需要提供整数与表型对应转化表）。当执行分类任务时，Lightgbm 仅接受带有示例标签[0，N） 的连续整数。 如果训练样本来自5组，则需要 [0、1、2、3、4] 作为5组的标签，但这通常与实际的组命名不匹配。使用此参数， 程序可以实现样本标签和[0，N）个连续整数之间的可逆转换。为下游分类任务提供兼容的表型数据。<br/>
+<p><code>--phefile-sep</code> (str) ：表型数据文件分隔符。默认值为 ','<br/>
+<code>--phe-name</code> (str) ：表型数据文件中储存表型信息的列名。<br/>
+<code>--phe-recode</code> (str) ：调用表型数据重编码函数，可选值 <code>[word2num, num2word]</code>。其中 word2num 表示将表型数据重编码为连续非负整数形式， num2word 表示将连续非负整数形式重编码为表型数据（需要提供整数与表型对应转化表）。当执行分类任务时，Lightgbm 仅接受带有示例标签[0，N） 的连续整数。 如果训练样本来自5组，则需要 [0、1、2、3、4] 作为5组的标签，但这通常与实际的组命名不匹配。使用此参数， 程序可以实现样本标签和[0，N）个连续整数之间的可逆转换。为下游分类任务提供兼容的表型数据。<br/>
 <h2 id="_5">群体结构分析模块参数</h2>
 <ul>
 <li><strong>布尔参数</strong></li>
@@ -196,24 +196,24 @@
 <ul>
 <li><strong>必须参数</strong></li>
 </ul>
-<p><code>--genofile-path</code>：基因型数据文件路径，常为预处理后结果作为输入。</p>
+<p><code>--genofile-path</code> (str) ：基因型数据文件路径，常为预处理后结果作为输入。</p>
 <ul>
 <li><strong>半必须参数</strong></li>
 </ul>
-<p><code>--n-clusters</code>：形成的簇数以及生成的质心数。该参数仅在<code>--cluster-mode=kmeans</code>时使用。<br/>
-<code>--sgroupfile-path</code>：组编号数据文件路径。<br/>
-<code>--sgroupfile-sep</code>：组编号数据文件分隔符。默认值 ','<br/>
-<code>--sgroupfile-name</code>：组编号数据文件中储存组编号信息的列名。</p>
+<p><code>--n-clusters</code> (int) ：形成的簇数以及生成的质心数。该参数仅在<code>--cluster-mode=kmeans</code>时使用。<br/>
+<code>--sgroupfile-path</code> (str) ：组编号数据文件路径。<br/>
+<code>--sgroupfile-sep</code> (str) ：组编号数据文件分隔符。默认值 ','<br/>
+<code>--sgroupfile-name</code> (str) ：组编号数据文件中储存组编号信息的列名。</p>
 <ul>
 <li><strong>可选参数</strong></li>
 </ul>
-<p><code>--redim-mode</code>：降维算法，可选值 [tsne, pca]。默认值 pca<br/>
-<code>--pca-explained-var</code>：参数值为大于1的整数或0-1间的小数。当参数值为整数时，表示pca降维后数据的维度； 当参数值为小数时，表示pca降维后数据可解释的变异量。默认值为 0.95。该参数仅在<code>--redim-mode=pca</code>时使用<br/>
-<code>--window-size</code>：降维中滑窗大小。由于 t-SNE 降维算法计算速度随维度的增加而大幅降低，程序通过滑窗的方式对数据进行初步降维。 默认值为 20。该参数仅在<code>--redim-mode=tsne</code>时使用。<br/>
-<code>--cluster-mode</code>：聚类算法，可选值 [kmeans, optics]。默认值 kmeans<br/>
-<code>--optics-min-samples</code>：参数值为大于1的整数或0-1间的小数。当参数值为整数时，表示构成核心点所需的最小样本数； 当参数值为小数时，表示构成核心点所需的最小样本数占总样本数的比例。该参数仅在<code>--cluster-mode=optics</code>时使用。默认值为 0.025<br/>
-<code>--optics-xi</code>：聚集成类所需的可达距离梯度的最小值。该参数仅在<code>--cluster-mode=optics</code>时使用。默认值为 0.05<br/>
-<code>--optics-min-cluster-size</code>：参数值为大于1的整数或0-1间的小数。当参数值为整数时，表示聚集成类所需的最小样本数；当参数值为小数时，表示聚集成类所需的最小样本数占总样本数的比例。该参数仅在<code>--cluster-mode=optics</code>时使用。默认值为 0.03<br/><br/></p>
+<p><code>--redim-mode</code> (str) ：降维算法，可选值 <code>[tsne, pca]</code>。默认值 pca<br/>
+<code>--pca-explained-var</code> (int or float) ：参数值为大于1的整数或0-1间的小数。当参数值为整数时，表示pca降维后数据的维度； 当参数值为小数时，表示pca降维后数据可解释的变异量。默认值为 0.95。该参数仅在<code>--redim-mode=pca</code>时使用<br/>
+<code>--window-size</code> (int) ：降维中滑窗大小。由于 t-SNE 降维算法计算速度随维度的增加而大幅降低，程序通过滑窗的方式对数据进行初步降维。 默认值为 20。该参数仅在<code>--redim-mode=tsne</code>时使用。<br/>
+<code>--cluster-mode</code> (str) ：聚类算法，可选值 <code>[kmeans, optics]</code>。默认值 kmeans<br/>
+<code>--optics-min-samples</code> (int or float) ：参数值为大于1的整数或0-1间的小数。当参数值为整数时，表示构成核心点所需的最小样本数； 当参数值为小数时，表示构成核心点所需的最小样本数占总样本数的比例。该参数仅在<code>--cluster-mode=optics</code>时使用。默认值为 0.025<br/>
+<code>--optics-xi</code> (int or float) ：聚集成类所需的可达距离梯度的最小值。该参数仅在<code>--cluster-mode=optics</code>时使用。默认值为 0.05<br/>
+<code>--optics-min-cluster-size</code> (int or float) ：参数值为大于1的整数或0-1间的小数。当参数值为整数时，表示聚集成类所需的最小样本数；当参数值为小数时，表示聚集成类所需的最小样本数占总样本数的比例。该参数仅在<code>--cluster-mode=optics</code>时使用。默认值为 0.03<br/><br/></p>
 <h2 id="_6">特征选择与表型预测模块参数</h2>
 <ul>
 <li><strong>布尔参数</strong></li>
@@ -227,35 +227,35 @@
 <ul>
 <li><strong>半必须参数</strong></li>
 </ul>
-<p><code>--traingeno</code>：训练集样本基因型数据文件路径。文件分隔符为','，第一行为snp编号信息，第一列为样本编号信息。 该参数在<code>-t</code>或<code>-cv</code>被指明时使用。<br/>
-<code>--trainphe</code>：训练集样本表型数据文件路径。文件分隔符为','，包含表头，第一列为样本编号信息。该参数在<code>-t</code>或<code>-cv</code>被指明时使用。<br/>
-<code>--testgeno</code>：测试集样本基因型数据文件路径。文件分隔符为','，第一行为snp编号信息，第一列为样本编号信息。该参数在<code>-p</code>被指明时使用。<br/>
-<code>--modelfile-path</code>：lightgbm 模型文件路径，程序通过此模型完成对测试集样本的表型预测。该参数在<code>-p</code>被指明时使用。</p>
+<p><code>--traingeno</code> (str) ：训练集样本基因型数据文件路径。文件分隔符为','，第一行为snp编号信息，第一列为样本编号信息。 该参数在<code>-t</code>或<code>-cv</code>被指明时使用。<br/>
+<code>--trainphe</code> (str) ：训练集样本表型数据文件路径。文件分隔符为','，包含表头，第一列为样本编号信息。该参数在<code>-t</code>或<code>-cv</code>被指明时使用。<br/>
+<code>--testgeno</code> (str) ：测试集样本基因型数据文件路径。文件分隔符为','，第一行为snp编号信息，第一列为样本编号信息。该参数在<code>-p</code>被指明时使用。<br/>
+<code>--modelfile-path</code> (str) ：lightgbm 模型文件路径，程序通过此模型完成对测试集样本的表型预测。该参数在<code>-p</code>被指明时使用。</p>
 <ul>
 <li><strong>可选参数</strong></li>
 </ul>
-<p><code>--validgeno</code>：验证集样本基因型数据文件路径。文件分隔符为','，第一行为snp编号信息，第一列为样本编号信息。该参数在<code>-t</code>被指明时使用。<br/>
-<code>--validphe</code>：验证集样本样本编号信息文件路径。文件分隔符为','，包含表头，第一列为样本编号信息。该参数在<code>-t</code>被指明时使用。<br/>
-<code>--init-model-path</code>：起始模型文件路径，lightgbm 算法会在此模型基础上继续训练。常用于大数据的分批训练。 该参数在<code>-t</code>或<code>-cv</code>被指明时使用。<br/>
-<code>--min-detal</code>：每次训练对模型精确度提升的最小百分值。程序会返回提升的精确度小于此阈值时模型的训练次数与此时模型交叉验证的精确度。 当<code>objective=regression</code>时，精确度为预测结果与真实值间 mse 的均值。该参数在<code>-cv</code>被指明时使用。默认值 0.05<br/>
-<code>--cv-times</code>：交叉验证的重复次数。该参数在<code>-sf</code>被指明时使用。默认值 5<br/>
-<code>--cv-nfold</code>：每次交叉验证的折叠数。该参数在<code>-cv</code>被指明时使用。默认值 5<br/>
-<code>--min-gain</code>：交算每个snp在模型中的总增益，将最大增益与<code>--min-gain</code>的乘积作为阈值。当snp在模型中的总增益小于阈值时， 此snp不会被选择。该参数在<code>-sf</code>且<code>--bygain-boxplot</code>被指明时使用。默认值 0.05<br/>
-<code>--max-colorbar</code>：各snp在各树中的最大增益值与<code>--max-colorbar</code>的乘积将作为热图中 colorbar 的最大值。 该参数在<code>-sf</code>被指明时使用。默认值 0.6<br/></p>
+<p><code>--validgeno</code> (str) ：验证集样本基因型数据文件路径。文件分隔符为','，第一行为snp编号信息，第一列为样本编号信息。该参数在<code>-t</code>被指明时使用。<br/>
+<code>--validphe</code> (str) ：验证集样本样本编号信息文件路径。文件分隔符为','，包含表头，第一列为样本编号信息。该参数在<code>-t</code>被指明时使用。<br/>
+<code>--init-model-path</code> (str) ：起始模型文件路径，lightgbm 算法会在此模型基础上继续训练。常用于大数据的分批训练。 该参数在<code>-t</code>或<code>-cv</code>被指明时使用。<br/>
+<code>--min-detal</code> (float) ：每次训练对模型精确度提升的最小百分值。程序会返回提升的精确度小于此阈值时模型的训练次数与此时模型交叉验证的精确度。 当<code>objective=regression</code>时，精确度为预测结果与真实值间 mse 的均值。该参数在<code>-cv</code>被指明时使用。默认值 0.05<br/>
+<code>--cv-times</code> (int) ：交叉验证的重复次数。该参数在<code>-sf</code>被指明时使用。默认值 5<br/>
+<code>--cv-nfold</code> (int) ：每次交叉验证的折叠数。该参数在<code>-cv</code>被指明时使用。默认值 5<br/>
+<code>--min-gain</code> (float) ：交算每个snp在模型中的总增益，将最大增益与<code>--min-gain</code>的乘积作为阈值。当snp在模型中的总增益小于阈值时， 此snp不会被选择。该参数在<code>-sf</code>且<code>--bygain-boxplot</code>被指明时使用。默认值 0.05<br/>
+<code>--max-colorbar</code> (float) ：各snp在各树中的最大增益值与<code>--max-colorbar</code>的乘积将作为热图中 colorbar 的最大值。 该参数在<code>-sf</code>被指明时使用。默认值 0.6<br/></p>
 <h2 id="lightgbm">lightgbm参数</h2>
-<p><code>--learning-rate</code>：模型的学习率。默认值为0.1<br/>
-<code>--num-leaves</code>：每棵决策树的最大叶片数。默认值为10<br/>
-<code>--num-threads</code>：可供核心模块运算调用的 CPU 线程数。默认值为0，0表示 OpenMP 中的默认线程数。<br/>
-<code>--min-data-in-leaf</code>：每个叶片中最小样本数。默认值为1<br/>
-<code>--objective</code>：模型训练的目的类型。默认值为'regression'<br/>
-<code>--device-type</code>：模型运算所调用的设备类型，可选值 ['cpu', 'gpu']。默认值为'cpu'<br/>
-<code>--max-depth</code>：决策树最大深度。若值&lt;=0表示没有最大深度限制。默认值为-1<br/>
-<code>--feature-fraction</code>：训练模型所用到的特征数占总特征数的比例。默认值为1<br/>
-<code>--verbosity</code>：控制模型训练过程中信息的输出复杂度。&lt; 0: Fatal, = 0: Error (Warning), = 1: Info, &gt; 1: Debug。默认值为0<br/>
-<code>--num-class</code>：训练集中样本的类别数。该参数仅在多分类任务时被调用，即<code>--objective：multiclass</code>。默认值为1<br/>
-<code>--num-boost-round</code>：模型的训练（迭代）次数。默认值为100<br/>
-<code>--early-stopping-rounds</code>：此参数仅在<code>-cv</code>或<code>-t</code>且有验证集的情况下别调用。每经过N轮（N为用户定义此参数的值）训练后， 程序将计算模型在验证集上的预测精度，若预测精度不再提升，模型将立即停止训练。该参数可以用于防止模型训练过拟合。默认值为20<br/>
-<code>--verbose-eval</code>：此参数仅在<code>-cv</code>或<code>-t</code>且有验证集的情况下别调用。每经过N轮（N为用户定义此参数的值）训练后， 程序将计算模型在验证集上的预测精度并输出。默认值为10</p>
+<p><code>--learning-rate</code> (float) ：模型的学习率。默认值为0.1<br/>
+<code>--num-leaves</code> (int) ：每棵决策树的最大叶片数。默认值为10<br/>
+<code>--num-threads</code> (int) ：可供核心模块运算调用的 CPU 线程数。默认值为0，0表示 OpenMP 中的默认线程数。<br/>
+<code>--min-data-in-leaf</code> (int) ：每个叶片中最小样本数。默认值为1<br/>
+<code>--objective</code> (str) ：模型训练的目的类型，可选值 <code>['regression', 'multiclass']</code>。默认值为'regression'<br/>
+<code>--device-type</code> (str) ：模型运算所调用的设备类型，可选值 <code>['cpu', 'gpu']</code>。默认值为'cpu'<br/>
+<code>--max-depth</code> (int) ：决策树最大深度。若值&lt;=0表示没有最大深度限制。默认值为-1<br/>
+<code>--feature-fraction</code> (float) ：训练模型所用到的特征数占总特征数的比例。默认值为1<br/>
+<code>--verbosity</code> (int) ：控制模型训练过程中信息的输出复杂度。&lt; 0: Fatal, = 0: Error (Warning), = 1: Info, &gt; 1: Debug。默认值为0<br/>
+<code>--num-class</code> (int) ：训练集中样本的类别数。该参数仅在多分类任务时被调用，即<code>--objective：multiclass</code>。默认值为1<br/>
+<code>--num-boost-round</code> (int) ：模型的训练（迭代）次数。默认值为100<br/>
+<code>--early-stopping-rounds</code> (int) ：此参数仅在<code>-cv</code>或<code>-t</code>且有验证集的情况下别调用。每经过N轮（N为用户定义此参数的值）训练后， 程序将计算模型在验证集上的预测精度，若预测精度不再提升，模型将立即停止训练。该参数可以用于防止模型训练过拟合。默认值为20<br/>
+<code>--verbose-eval</code> (int) ：此参数仅在<code>-cv</code>或<code>-t</code>且有验证集的情况下别调用。每经过N轮（N为用户定义此参数的值）训练后， 程序将计算模型在验证集上的预测精度并输出。默认值为10</p>
               
             </div>
           </div>
